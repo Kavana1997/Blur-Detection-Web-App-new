@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Install project dependencies
-                    sh "${NodeJS12}/bin/npm install"
+                    sh "NodeJS12/bin/npm install"
                 }
             }
         }
