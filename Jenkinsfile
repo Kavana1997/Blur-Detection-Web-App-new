@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODEJS_HOME = "${tool 'NodeJS 14'}"
+        NODEJS_HOME = "${tool 'NodeJS12'}"
     }
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Install project dependencies
-                    sh "${NODEJS_HOME}/bin/npm install"
+                    sh "${NodeJS12}/bin/npm install"
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Run your build command (e.g., npm run build)
-                    sh "${NODEJS_HOME}/bin/npm run build"
+                    sh "${NodeJS12}/bin/npm run build"
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     // Run your test command (e.g., npm test)
-                    sh "${NODEJS_HOME}/bin/npm test"
+                    sh "${NodeJS12}/bin/npm test"
                 }
             }
         }
