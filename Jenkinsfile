@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Run your build command (e.g., npm run build)
-                    sh "${NodeJS12}/bin/npm run build"
+                    sh "${tool 'NodeJS12'}/bin/npm run build"
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     // Run your test command (e.g., npm test)
-                    sh "${NodeJS12}/bin/npm test"
+                    sh "${tool 'NodeJS12'}/bin/npm test"
                 }
             }
         }
