@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Run your build process (e.g., npm run build)
-                    sh "${'NodeJS12'}/bin/npm run build"
+                    sh "${tool 'NodeJS12'}/bin/npm run build"
                 }
             }
         }
@@ -36,13 +36,6 @@ pipeline {
                     // Run your test command (e.g., npm test)
                     sh "${tool 'NodeJS12'}/bin/npm test"
                 }
-            }
-        }
-
-        stage('Archive Artifacts') {
-            steps {
-                // Archive build artifacts (e.g., the dist folder containing the built files)
-                archiveArtifacts artifacts: 'dist/**/*', allowEmptyArchive: true
             }
         }
     }
