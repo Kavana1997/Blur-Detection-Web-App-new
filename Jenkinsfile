@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODEJS_HOME = "${tool 'NodeJS12'}"
+        NODEJS_HOME = 'NodeJS12' // Specify the Node.js installation tool name
     }
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Install project dependencies
-                    sh "${tool 'NodeJS12'}/bin/npm install"
+                    sh "${'NodeJS12'}/bin/npm install"
                 }
             }
         }
@@ -24,8 +24,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Run your build command (e.g., npm run build)
-                    sh "${tool 'NodeJS12'}/bin/npm run build"
+                    // Run your build process (e.g., npm run build)
+                    sh "${'NodeJS12'}/bin/npm run build"
                 }
             }
         }
@@ -38,17 +38,24 @@ pipeline {
                 }
             }
         }
+
+        stage('Archive Artifacts') {
+            steps {
+                // Archive build artifacts (e.g., the dist folder containing the built files)
+                archiveArtifacts artifacts: 'dist/**/*', allowEmptyArchive: true
+            }
+        }
     }
 
     post {
         success {
-            echo 'Build and test successful!'
+            echo 'Build successful!'
 
-            // Add deployment steps if needed
+            // Add additional post-build actions if needed
         }
 
         failure {
-            echo 'Build or test failed. Please check the logs for details.'
+            echo 'Build failed. Please check the logs for details.'
         }
     }
 }
