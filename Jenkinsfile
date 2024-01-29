@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODEJS_HOME = 'NodeJS12' // Specify the Node.js installation tool name
+        NODEJS_HOME = "${tool 'NodeJS12'}" // Specify the Node.js installation tool name
     }
 
     stages {
