@@ -1,3 +1,4 @@
+import pytest
 from app import app
 from flask import Flask, flash, request, redirect, render_template
 from werkzeug.utils import secure_filename
